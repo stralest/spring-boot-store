@@ -1,0 +1,127 @@
+package com.codewithmosh.store.payments;
+
+import com.codewithmosh.store.entities.Order;
+import com.codewithmosh.store.entities.OrderItem;
+import com.codewithmosh.store.entities.OrderStatus;
+import com.stripe.exception.SignatureVerificationException;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Event;
+import com.stripe.model.PaymentIntent;
+import com.stripe.model.checkout.Session;
+import com.stripe.net.Webhook;
+import com.stripe.param.checkout.SessionCreateParams;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.Optional;
+
+@RequiredArgsConstructor
+@Service
+public class StripePaymentGateway implements PaymentGateway{
+    @Value("${websiteUrl}")
+    private String websiteUrl;
+
+    @Value("${stripe.webhookSecretKey}")
+    private String webhookSecretKey;
+
+    @Override
+    public CheckoutSession createCheckoutSession(Order order) {
+        try{
+            var builder = SessionCreateParams.builder()
+                    .setMode(SessionCreateParams.Mode.PAYMENT)
+                    .setSuccessUrl(
+                            websiteUrl + "/checkout-success?orderId=" + order.getId()
+                    )
+                    .setCancelUrl(
+                            websiteUrl + "/checkout-cancel.html"
+                    )
+                    .setPaymentIntentData(
+                            SessionCreateParams.PaymentIntentData.builder()
+                                    .putMetadata(
+                                            "order_id",
+                                            order.getId().toString()
+                                    )
+                                    .build()
+                    );
+
+            order.getItems().forEach(item -> {
+                var lineItem = createLineItem(item);
+
+                builder.addLineItem(lineItem);
+            });
+
+            var session = Session.create(builder.build());
+            return new CheckoutSession(session.getUrl());
+        }
+        catch (StripeException ex){
+            System.out.println(ex.getMessage());
+            throw new PaymentException();
+        }
+    }
+
+    @Override
+    public Optional<PaymentResult> parseWeebhookRequest(WebhookRequest request) {
+        try {
+            var payload = request.getPayload();
+            var signature = request.getHeaders().get("stripe-signature");
+            var event = Webhook.constructEvent(payload, signature, webhookSecretKey);
+
+            switch (event.getType()){
+                case "payment_intent.succeeded" ->{
+                    return Optional.of(new PaymentResult(extractOrderId(event), OrderStatus.PAID));
+                }
+                case "payment_intent.payment_failed" -> {
+                    return Optional.of(new PaymentResult(extractOrderId(event), OrderStatus.FAILED));
+                }
+                default -> {
+                    return Optional.empty();
+                }
+
+            }
+
+        } catch (SignatureVerificationException e) {
+            throw new PaymentException("Invalid signature!");
+        }
+    }
+
+    private Long extractOrderId(Event event){
+        var stripeObejct = event.getDataObjectDeserializer().getObject().orElseThrow(
+                () -> new PaymentException("Could not deserialize Stripe event. Check SDK and API verion!")
+        );
+
+        var paymentIntent = (PaymentIntent) stripeObejct;
+        return Long.valueOf(paymentIntent.getMetadata().get("order_id"));
+
+    }
+
+    private SessionCreateParams.LineItem createLineItem(OrderItem item) {
+        return SessionCreateParams.LineItem.builder()
+                .setQuantity(Long.valueOf(item.getQuantity()))
+                .setPriceData(
+                        createPriceData(item)
+                                .setProductData(createProductData(item))
+                                .build()
+                )
+                .build();
+    }
+
+    private SessionCreateParams.LineItem.PriceData.Builder createPriceData(
+            OrderItem item
+    ) {
+        return SessionCreateParams.LineItem.PriceData.builder()
+                .setCurrency("eur")
+                .setUnitAmountDecimal(
+                    item.getUnitPrice().multiply(BigDecimal.valueOf(100))
+                );
+    }
+
+    private SessionCreateParams.LineItem.PriceData.ProductData createProductData(
+            OrderItem item
+    ) {
+        return SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                .setName(item.getProduct().getName())
+                .build();
+    }
+}
