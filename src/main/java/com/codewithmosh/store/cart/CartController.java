@@ -1,10 +1,9 @@
-package com.codewithmosh.store.controllers;
+package com.codewithmosh.store.cart;
 
-import com.codewithmosh.store.dtos.AddItemToCartRequest;
-import com.codewithmosh.store.dtos.CartDto;
-import com.codewithmosh.store.dtos.CartItemDto;
-import com.codewithmosh.store.dtos.UpdateCartItemRequest;
-import com.codewithmosh.store.services.CartService;
+import com.codewithmosh.store.cart.dtos.AddItemToCartRequest;
+import com.codewithmosh.store.cart.dtos.CartDto;
+import com.codewithmosh.store.cart.dtos.CartItemDto;
+import com.codewithmosh.store.cart.dtos.UpdateCartItemRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

@@ -1,5 +1,6 @@
 package com.codewithmosh.store.dtos;
 
+import com.codewithmosh.store.cart.dtos.CartProductDto;
 import lombok.Data;
 
 import java.math.BigDecimal;

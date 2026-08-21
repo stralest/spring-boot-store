@@ -1,4 +1,4 @@
-package com.codewithmosh.store.dtos;
+package com.codewithmosh.store.cart.dtos;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

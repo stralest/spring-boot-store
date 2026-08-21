@@ -1,10 +1,9 @@
-package com.codewithmosh.store.entities;
+package com.codewithmosh.store.cart.entities;
 
-import com.codewithmosh.store.dtos.UpdateCartItemRequest;
+import com.codewithmosh.store.entities.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
