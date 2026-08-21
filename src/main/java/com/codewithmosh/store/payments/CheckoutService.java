@@ -7,7 +7,7 @@ import com.codewithmosh.store.cart.exceptions.CartNotFoundException;
 import com.codewithmosh.store.cart.exceptions.EmptyCartException;
 import com.codewithmosh.store.cart.CartRepository;
 import com.codewithmosh.store.order.OrderRepository;
-import com.codewithmosh.store.services.AuthService;
+import com.codewithmosh.store.auth.AuthService;
 import com.codewithmosh.store.cart.CartService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

@@ -2,7 +2,7 @@ package com.codewithmosh.store.order;
 
 import com.codewithmosh.store.order.dtos.OrderDto;
 import com.codewithmosh.store.order.entities.Order;
-import com.codewithmosh.store.services.AuthService;
+import com.codewithmosh.store.auth.AuthService;
 import com.codewithmosh.store.user.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;

@@ -1,7 +1,7 @@
 package com.codewithmosh.store.config;
 
 import com.codewithmosh.store.user.Role;
-import com.codewithmosh.store.filters.JwtAuthenticationFilter;
+import com.codewithmosh.store.auth.JwtAuthenticationFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
