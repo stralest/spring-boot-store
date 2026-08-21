@@ -1,4 +1,4 @@
-package com.codewithmosh.store.payments;
+package com.codewithmosh.store.payments.dtos;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
