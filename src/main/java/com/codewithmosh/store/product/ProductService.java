@@ -1,8 +1,8 @@
 package com.codewithmosh.store.product;
 
 import com.codewithmosh.store.product.dtos.ProductDto;
-import com.codewithmosh.store.entities.Category;
-import com.codewithmosh.store.repositories.CategoryRepository;
+import com.codewithmosh.store.category.Category;
+import com.codewithmosh.store.category.CategoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
