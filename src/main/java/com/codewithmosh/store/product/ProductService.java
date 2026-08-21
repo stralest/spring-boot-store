@@ -1,10 +1,8 @@
-package com.codewithmosh.store.services;
+package com.codewithmosh.store.product;
 
-import com.codewithmosh.store.dtos.ProductDto;
+import com.codewithmosh.store.product.dtos.ProductDto;
 import com.codewithmosh.store.entities.Category;
-import com.codewithmosh.store.entities.Product;
 import com.codewithmosh.store.repositories.CategoryRepository;
-import com.codewithmosh.store.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

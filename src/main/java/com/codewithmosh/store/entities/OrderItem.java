@@ -1,7 +1,7 @@
 package com.codewithmosh.store.entities;
 
+import com.codewithmosh.store.product.Product;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

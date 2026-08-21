@@ -1,12 +1,9 @@
-package com.codewithmosh.store.controllers;
+package com.codewithmosh.store.product;
 
-import com.codewithmosh.store.dtos.ProductDto;
-import com.codewithmosh.store.dtos.UpdateProductRequest;
+import com.codewithmosh.store.product.dtos.ProductDto;
+import com.codewithmosh.store.product.dtos.UpdateProductRequest;
 import com.codewithmosh.store.entities.Category;
-import com.codewithmosh.store.entities.Product;
-import com.codewithmosh.store.mapper.ProductMapper;
 import com.codewithmosh.store.repositories.CategoryRepository;
-import com.codewithmosh.store.repositories.ProductRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

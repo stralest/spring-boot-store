@@ -1,7 +1,5 @@
-package com.codewithmosh.store.repositories;
+package com.codewithmosh.store.product;
 
-import com.codewithmosh.store.dtos.ProductDto;
-import com.codewithmosh.store.entities.Product;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

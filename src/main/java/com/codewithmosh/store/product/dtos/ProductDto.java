@@ -1,4 +1,4 @@
-package com.codewithmosh.store.dtos;
+package com.codewithmosh.store.product.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,13 +1,10 @@
-package com.codewithmosh.store.mapper;
+package com.codewithmosh.store.product;
 
-import com.codewithmosh.store.dtos.CreateProductRequest;
-import com.codewithmosh.store.dtos.ProductDto;
-import com.codewithmosh.store.dtos.UpdateProductRequest;
-import com.codewithmosh.store.entities.Product;
+import com.codewithmosh.store.product.dtos.ProductDto;
+import com.codewithmosh.store.product.dtos.UpdateProductRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 public interface ProductMapper {

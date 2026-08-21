@@ -1,6 +1,6 @@
 package com.codewithmosh.store.cart.entities;
 
-import com.codewithmosh.store.entities.Product;
+import com.codewithmosh.store.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

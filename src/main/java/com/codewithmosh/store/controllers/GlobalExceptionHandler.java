@@ -5,6 +5,7 @@ import com.codewithmosh.store.cart.exceptions.EmptyCartException;
 import com.codewithmosh.store.dtos.ErrorDto;
 import com.codewithmosh.store.exceptions.*;
 import com.codewithmosh.store.payments.PaymentException;
+import com.codewithmosh.store.product.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
