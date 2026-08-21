@@ -1,11 +1,9 @@
-package com.codewithmosh.store.controllers;
+package com.codewithmosh.store.user;
 
-import com.codewithmosh.store.dtos.*;
-import com.codewithmosh.store.entities.Role;
-import com.codewithmosh.store.entities.User;
-import com.codewithmosh.store.mapper.UserMapper;
-import com.codewithmosh.store.repositories.UserRepository;
-import com.codewithmosh.store.services.UserService;
+import com.codewithmosh.store.user.dtos.RegisterUserRequest;
+import com.codewithmosh.store.user.dtos.UpdatePasswordRequest;
+import com.codewithmosh.store.user.dtos.UpdateUserRequest;
+import com.codewithmosh.store.user.dtos.UserDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

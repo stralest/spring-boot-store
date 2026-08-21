@@ -1,12 +1,8 @@
-package com.codewithmosh.store.dtos;
+package com.codewithmosh.store.user.dtos;
 
-import com.codewithmosh.store.entities.Role;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.codewithmosh.store.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Getter

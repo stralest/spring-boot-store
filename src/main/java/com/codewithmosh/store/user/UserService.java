@@ -1,7 +1,5 @@
-package com.codewithmosh.store.services;
+package com.codewithmosh.store.user;
 
-import com.codewithmosh.store.entities.User;
-import com.codewithmosh.store.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;

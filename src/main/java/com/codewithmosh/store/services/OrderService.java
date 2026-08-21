@@ -2,7 +2,7 @@ package com.codewithmosh.store.services;
 
 import com.codewithmosh.store.dtos.OrderDto;
 import com.codewithmosh.store.entities.Order;
-import com.codewithmosh.store.entities.User;
+import com.codewithmosh.store.user.User;
 import com.codewithmosh.store.exceptions.OrderNotFoundException;
 import com.codewithmosh.store.mapper.OrderMapper;
 import com.codewithmosh.store.repositories.OrderRepository;

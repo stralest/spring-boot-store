@@ -1,8 +1,7 @@
 package com.codewithmosh.store.services;
 
-import com.codewithmosh.store.entities.User;
-import com.codewithmosh.store.repositories.UserRepository;
-import io.jsonwebtoken.impl.security.EdwardsCurve;
+import com.codewithmosh.store.user.User;
+import com.codewithmosh.store.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;

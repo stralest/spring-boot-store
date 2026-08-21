@@ -1,5 +1,7 @@
-package com.codewithmosh.store.entities;
+package com.codewithmosh.store.user;
 
+import com.codewithmosh.store.entities.Address;
+import com.codewithmosh.store.entities.Profile;
 import com.codewithmosh.store.product.Product;
 import jakarta.persistence.*;
 import lombok.*;
