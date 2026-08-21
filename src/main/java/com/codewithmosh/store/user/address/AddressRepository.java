@@ -1,4 +1,4 @@
-package com.codewithmosh.store.address;
+package com.codewithmosh.store.user.address;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

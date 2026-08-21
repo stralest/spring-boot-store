@@ -1,8 +1,8 @@
 package com.codewithmosh.store.user;
 
-import com.codewithmosh.store.address.Address;
-import com.codewithmosh.store.profile.Profile;
+import com.codewithmosh.store.user.profile.Profile;
 import com.codewithmosh.store.product.Product;
+import com.codewithmosh.store.user.address.Address;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,4 +1,4 @@
-package com.codewithmosh.store.profile;
+package com.codewithmosh.store.user.profile;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

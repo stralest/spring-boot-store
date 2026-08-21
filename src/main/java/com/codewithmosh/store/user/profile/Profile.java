@@ -1,4 +1,4 @@
-package com.codewithmosh.store.profile;
+package com.codewithmosh.store.user.profile;
 
 import com.codewithmosh.store.user.User;
 import jakarta.persistence.*;
