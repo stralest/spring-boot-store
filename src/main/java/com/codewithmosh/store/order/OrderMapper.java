@@ -1,9 +1,9 @@
-package com.codewithmosh.store.mapper;
+package com.codewithmosh.store.order;
 
-import com.codewithmosh.store.dtos.OrderDto;
-import com.codewithmosh.store.dtos.OrderItemDto;
-import com.codewithmosh.store.entities.Order;
-import com.codewithmosh.store.entities.OrderItem;
+import com.codewithmosh.store.order.dtos.OrderDto;
+import com.codewithmosh.store.order.dtos.OrderItemDto;
+import com.codewithmosh.store.order.entities.Order;
+import com.codewithmosh.store.order.entities.OrderItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -1,7 +1,6 @@
-package com.codewithmosh.store.controllers;
+package com.codewithmosh.store.order;
 
-import com.codewithmosh.store.dtos.OrderDto;
-import com.codewithmosh.store.services.OrderService;
+import com.codewithmosh.store.order.dtos.OrderDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

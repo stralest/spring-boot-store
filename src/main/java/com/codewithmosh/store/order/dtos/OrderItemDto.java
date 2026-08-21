@@ -1,4 +1,4 @@
-package com.codewithmosh.store.dtos;
+package com.codewithmosh.store.order.dtos;
 
 import com.codewithmosh.store.cart.dtos.CartProductDto;
 import lombok.Data;

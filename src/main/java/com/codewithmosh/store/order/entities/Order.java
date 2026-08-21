@@ -1,4 +1,4 @@
-package com.codewithmosh.store.entities;
+package com.codewithmosh.store.order.entities;
 
 import com.codewithmosh.store.cart.entities.Cart;
 import com.codewithmosh.store.user.User;
