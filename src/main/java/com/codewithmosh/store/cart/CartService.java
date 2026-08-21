@@ -28,17 +28,9 @@ public class CartService {
     }
 
     public CartItemDto addToCart(UUID cartId, Long productId){
-        Cart cart = cartRepository.getCartWithItems(cartId).orElse(null);
+        Cart cart = cartRepository.getCartWithItems(cartId).orElseThrow(CartNotFoundException::new);
 
-        if(cart == null){
-            throw new CartNotFoundException();
-        }
-
-        Product product = productRepository.findById(productId).orElse(null);
-
-        if(product == null){
-            throw new ProductNotFoundException();
-        }
+        Product product = productRepository.findById(productId).orElseThrow(ProductNotFoundException::new);
 
         CartItem cartItem = cart.addItem(product);
 
@@ -48,21 +40,13 @@ public class CartService {
     }
 
     public CartDto getCart(UUID cartId){
-        Cart cart = cartRepository.getCartWithItems(cartId).orElse(null);
-
-        if(cart == null){
-            throw new CartNotFoundException();
-        }
+        Cart cart = cartRepository.getCartWithItems(cartId).orElseThrow(CartNotFoundException::new);
 
         return cartMapper.toDto(cart);
     }
 
     public CartItemDto updateCart(UUID cartId, Long productId, Integer quantity){
-        Cart cart = cartRepository.findById(cartId).orElse(null);
-
-        if(cart == null){
-            throw new CartNotFoundException();
-        }
+        Cart cart = cartRepository.findById(cartId).orElseThrow(CartNotFoundException::new);
 
         CartItem cartItem = cart.findCartItem(productId);
 
@@ -71,7 +55,6 @@ public class CartService {
         }
 
         cart.setQuantityToCartItem(cartItem, quantity);
-
 
         cartRepository.save(cart);
 
@@ -87,11 +70,7 @@ public class CartService {
     }
 
     public void clearCart(UUID cartId){
-        Cart cart = cartRepository.findById(cartId).orElse(null);
-
-        if(cart == null){
-            throw new CartNotFoundException();
-        }
+        Cart cart = cartRepository.findById(cartId).orElseThrow(CartNotFoundException::new);
 
         cart.clearCart();
 
