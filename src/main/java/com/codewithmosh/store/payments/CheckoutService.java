@@ -28,11 +28,7 @@ public class CheckoutService {
 
     @Transactional
     public CheckoutResponse checkout(CheckoutRequest request) {
-        Cart cart = cartRepository.getCartWithItems(request.getCartId()).orElse(null);
-
-        if(cart == null){
-            throw new CartNotFoundException();
-        }
+        Cart cart = cartRepository.getCartWithItems(request.getCartId()).orElseThrow(CartNotFoundException::new);
 
         if(cart.isEmpty()){
             throw new EmptyCartException();
