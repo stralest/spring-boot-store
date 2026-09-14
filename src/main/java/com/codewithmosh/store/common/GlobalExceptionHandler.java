@@ -6,6 +6,9 @@ import com.codewithmosh.store.common.dtos.ErrorDto;
 import com.codewithmosh.store.order.OrderNotFoundException;
 import com.codewithmosh.store.payments.PaymentException;
 import com.codewithmosh.store.product.ProductNotFoundException;
+import com.codewithmosh.store.user.Exceptions.EmailAlreadyExistsException;
+import com.codewithmosh.store.user.Exceptions.InvalidPasswordException;
+import com.codewithmosh.store.user.Exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -24,6 +27,29 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorDto> handleUnreadableMessage(){
         return ResponseEntity.badRequest()
                 .body(new ErrorDto("Invalid request body"));
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleUserNotFound(
+            UserNotFoundException exception
+    ){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ErrorDto(exception.getMessage()));
+    }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<ErrorDto> handleEmailAlreadyExists(
+            EmailAlreadyExistsException exception
+    ){
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(new ErrorDto(exception.getMessage()));
+    }
+
+    @ExceptionHandler(InvalidPasswordException.class)
+    public ResponseEntity<ErrorDto> handleInvalidPassword(
+    ){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new ErrorDto("Incorrect password!"));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
