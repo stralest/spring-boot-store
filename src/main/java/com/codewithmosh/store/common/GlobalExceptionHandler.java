@@ -2,6 +2,7 @@ package com.codewithmosh.store.common;
 
 import com.codewithmosh.store.cart.exceptions.CartNotFoundException;
 import com.codewithmosh.store.cart.exceptions.EmptyCartException;
+import com.codewithmosh.store.category.CategoryNotFoundException;
 import com.codewithmosh.store.common.dtos.ErrorDto;
 import com.codewithmosh.store.order.OrderNotFoundException;
 import com.codewithmosh.store.payments.PaymentException;
@@ -68,9 +69,19 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<ErrorDto> handleProductNotFound(){
+    public ResponseEntity<ErrorDto> handleProductNotFound(
+            ProductNotFoundException exception
+    ){
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(new ErrorDto("Product not found!"));
+                .body(new ErrorDto(exception.getMessage()));
+    }
+
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleCategoryNotFound(
+            CategoryNotFoundException exception
+    ){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ErrorDto(exception.getMessage()));
     }
 
     @ExceptionHandler(EmptyCartException.class)

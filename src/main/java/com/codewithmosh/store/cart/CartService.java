@@ -30,7 +30,7 @@ public class CartService {
     public CartItemDto addToCart(UUID cartId, Long productId){
         Cart cart = cartRepository.getCartWithItems(cartId).orElseThrow(CartNotFoundException::new);
 
-        Product product = productRepository.findById(productId).orElseThrow(ProductNotFoundException::new);
+        Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException(productId));
 
         CartItem cartItem = cart.addItem(product);
 
@@ -51,7 +51,7 @@ public class CartService {
         CartItem cartItem = cart.findCartItem(productId);
 
         if(cartItem == null){
-            throw new ProductNotFoundException();
+            throw new ProductNotFoundException(productId);
         }
 
         cart.setQuantityToCartItem(cartItem, quantity);
